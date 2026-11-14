@@ -13,7 +13,7 @@ export default function PasteReport({ onSubmit }) {
                 placeholder="Paste the lab report text here..."
             />
             <button disabled={!text.trim()} onClick={() => onSubmit(text)}>
-                Analyze pasted report
+                <span aria-hidden="true">🔍</span> Analyze pasted report
             </button>
         </div>
     );

@@ -13,7 +13,11 @@ export default function PatientPicker({ selectedId, onSelect }) {
             .finally(() => setLoading(false));
     }, []);
 
-    if (loading) return <p>Loading patients...</p>;
+    if (loading) return (
+        <div className="skeleton" style={{ marginTop: 0 }}>
+            <div className="sk-line" style={{ height: "60px", borderRadius: "10px", width: "100%" }}></div>
+        </div>
+    );
     if (error) return <p className="error">{error}</p>;
 
     return (
@@ -24,19 +28,19 @@ export default function PatientPicker({ selectedId, onSelect }) {
                     className={"patient-card" + (p.id === selectedId ? " selected" : "")}
                     onClick={() => onSelect(p.id)}
                 >
-                    <strong>{p.name}</strong>
-                    <span>
+                    <strong className="patient-name">{p.name}</strong>
+                    <span className="patient-meta">
                         Age: {p.age ?? "Not provided"} · Sex: {p.sex ?? "Not provided"}
                     </span>
                     <span className="tags">
                         {p.hasUrgent && (
                             <span className="tag urgent">
-                                <i className="dot red"></i> Urgent
+                                <span aria-hidden="true">⚠</span> Urgent
                             </span>
                         )}
                         {p.needsInfo.length > 0 && (
                             <span className="tag info">
-                                <i className="dot blue"></i> Needs info
+                                <span aria-hidden="true">ℹ</span> Needs info
                             </span>
                         )}
                     </span>

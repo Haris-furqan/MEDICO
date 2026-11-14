@@ -18,9 +18,10 @@ function Skeleton() {
   return (
     <div className="skeleton">
       <div className="sk-line wide"></div>
-      <div className="sk-line"></div>
-      <div className="sk-line"></div>
-      <div className="sk-line"></div>
+      <div className="sk-line" style={{ width: "80%" }}></div>
+      <div className="sk-line" style={{ width: "65%" }}></div>
+      <div className="sk-line" style={{ width: "75%" }}></div>
+      <div className="sk-line" style={{ width: "55%" }}></div>
     </div>
   );
 }
@@ -67,18 +68,33 @@ export default function App() {
 
   return (
     <div className="app">
-      <h1>CityLab Lab Report Explainer</h1>
-      <p className="subtitle">Pick a patient or paste a report.</p>
+      {/* ── Header ── */}
+      <header className="app-header">
+        <div className="app-logo" aria-hidden="true">🧬</div>
+        <div className="app-header-text">
+          <h1>CityLab Lab Report Explainer</h1>
+          <p className="subtitle">Pick a patient or paste a report to get started.</p>
+        </div>
+      </header>
 
+      {/* ── Patient picker ── */}
+      <div className="section-divider">Select a patient</div>
       <PatientPicker
         selectedId={selection?.patientId}
         onSelect={(id) => choose({ patientId: id })}
       />
 
+      {/* ── Paste box ── */}
       <PasteReport onSubmit={(text) => choose({ reportText: text })} />
 
+      {/* ── States ── */}
       {loading && !data && <Skeleton />}
-      {error && <p className="error">{error}</p>}
+      {error && (
+        <div className="error-box" role="alert">
+          <span className="error-box-icon" aria-hidden="true">⚠</span>
+          {error}
+        </div>
+      )}
       {data && (
         <ResultView data={data} busy={loading} onRerun={setDemographics} />
       )}

@@ -7,9 +7,12 @@ export default function UrgentBanner({ warnings }) {
     return (
         <div className="urgent-banner" role="alert">
             <span className="urgent-icon" aria-hidden="true">⚠</span>
-            <div>
+            <div className="urgent-banner-body">
+                <div className="urgent-banner-title">
+                    Urgent — Action Required
+                </div>
                 {lines.map((w, i) => (
-                    <div key={i}>{w}</div>
+                    <div key={i} className="urgent-banner-line">{w}</div>
                 ))}
             </div>
         </div>
