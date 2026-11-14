@@ -6,3 +6,20 @@ export async function getPatients() {
     const data = await res.json();
     return data.patients;
 }
+
+// body is { patientId } or { reportText }
+export async function analyze(body) {
+    const res = await fetch(`${BASE}/analyze`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+    });
+    const data = await res.json().catch(() => null);
+
+    if (!res.ok) {
+        const err = new Error(data?.error?.message || "Something went wrong");
+        err.code = data?.error?.code || "UNKNOWN";
+        throw err;
+    }
+    return data;
+}
