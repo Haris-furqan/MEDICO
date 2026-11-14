@@ -10,10 +10,9 @@ import cors from 'cors'
 
 app.use(cors({
   origin: [
-    'http://localhost:5173',
-    'https://netlify.app'
+    "http://localhost:5173",
+    "https://preeminent-meerkat-0b39a6.netlify.app",
   ],
-  credentials: true
 }));
 loadSamples(); // fails at startup if lab_reports is missing
 
