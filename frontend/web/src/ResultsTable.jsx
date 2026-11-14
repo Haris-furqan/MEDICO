@@ -19,12 +19,16 @@ function ResultRow({ r }) {
     return (
         <>
             <tr className={"row-" + r.status}>
-                <td>
+                <td data-label="Test">
                     <strong>{name}</strong>
-                    {showRawName && <div className="small">printed as “{r.rawName}”</div>}
-                    {r.reason && <div className="small reason">{r.reason}</div>}
+                    {showRawName && (
+                        <div className="small">printed as "{r.rawName}"</div>
+                    )}
+                    {r.reason && (
+                        <div className="small reason">{r.reason}</div>
+                    )}
                 </td>
-                <td>
+                <td className="mono" data-label="Value">
                     {r.value} {r.unit}
                     {converted && (
                         <div className="small">
@@ -32,12 +36,19 @@ function ResultRow({ r }) {
                         </div>
                     )}
                 </td>
-                <td>
+                <td data-label="Status">
                     <StatusBadge status={r.status} />
                 </td>
-                <td>{formatRange(r.range)}</td>
+                <td className="small" data-label="Normal range" style={{ color: "var(--clr-text)" }}>
+                    {formatRange(r.range)}
+                </td>
                 <td>
-                    <button className="link-btn" onClick={() => setOpen(!open)}>
+                    <button
+                        className="link-btn"
+                        onClick={() => setOpen(!open)}
+                        aria-expanded={open}
+                    >
+                        <span aria-hidden="true">{open ? "▴" : "▾"}</span>
                         {open ? "Hide" : "How we got this"}
                     </button>
                 </td>
@@ -46,14 +57,20 @@ function ResultRow({ r }) {
             {open && (
                 <tr className="steps-row">
                     <td colSpan={5}>
-                        <strong>Steps:</strong>
-                        <ol>
-                            {r.steps.map((s, i) => (
-                                <li key={i}>{s}</li>
-                            ))}
-                        </ol>
-                        <div className="small">
-                            Source: {r.source ? r.source : "No source (no range was chosen)"}
+                        <div className="steps-panel">
+                            <strong>Steps:</strong>
+                            <ol>
+                                {r.steps.map((s, i) => (
+                                    <li key={i}>{s}</li>
+                                ))}
+                            </ol>
+                            <div className="steps-source">
+                                <span aria-hidden="true">📋</span>
+                                Source:{" "}
+                                {r.source
+                                    ? r.source
+                                    : "No source (no range was chosen)"}
+                            </div>
                         </div>
                     </td>
                 </tr>
