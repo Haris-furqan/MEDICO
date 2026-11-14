@@ -26,21 +26,30 @@ function Skeleton() {
 }
 
 export default function App() {
-  // What the user chose: { patientId } or { reportText } or null
-  const [selection, setSelection] = useState(null);
+  const [selection, setSelection] = useState(null); // { patientId } or { reportText }
+  const [demographics, setDemographics] = useState(null); // { age?, sex? } or null
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  function choose(newSelection) {
+    setDemographics(null); // a new choice starts fresh
+    setSelection(newSelection);
+  }
+
   useEffect(() => {
     if (!selection) return;
-    let cancelled = false; // ignore old answers if the user clicks quickly
+    let cancelled = false;
 
     setLoading(true);
     setError("");
-    setData(null);
+    // For a fresh choice, clear the old result.
+    // For a re-run with demographics, keep showing the old results meanwhile.
+    if (demographics === null) setData(null);
 
-    analyze(selection)
+    const body = demographics ? { ...selection, demographics } : selection;
+
+    analyze(body)
       .then((d) => {
         if (!cancelled) setData(d);
       })
@@ -54,7 +63,7 @@ export default function App() {
     return () => {
       cancelled = true;
     };
-  }, [selection]);
+  }, [selection, demographics]);
 
   return (
     <div className="app">
@@ -63,14 +72,16 @@ export default function App() {
 
       <PatientPicker
         selectedId={selection?.patientId}
-        onSelect={(id) => setSelection({ patientId: id })}
+        onSelect={(id) => choose({ patientId: id })}
       />
 
-      <PasteReport onSubmit={(text) => setSelection({ reportText: text })} />
+      <PasteReport onSubmit={(text) => choose({ reportText: text })} />
 
-      {loading && <Skeleton />}
+      {loading && !data && <Skeleton />}
       {error && <p className="error">{error}</p>}
-      {data && <ResultView data={data} />}
+      {data && (
+        <ResultView data={data} busy={loading} onRerun={setDemographics} />
+      )}
     </div>
   );
 }
