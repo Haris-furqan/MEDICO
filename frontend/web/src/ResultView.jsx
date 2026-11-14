@@ -13,11 +13,23 @@ export default function ResultView({ data, busy, onRerun }) {
         <section className="result-view">
             {data.hasUrgent && <UrgentBanner warnings={ex?.warnings} />}
 
-            <h2>{p.name}</h2>
-            <p className="small">
-                Age: {p.age ?? "Not provided"} · Sex: {p.sex ?? "Not provided"}
-                {p.mrn && <> · MRN: {p.mrn}</>}
-            </p>
+            {/* Patient header */}
+            <div className="result-header">
+                <div>
+                    <h2>{p.name}</h2>
+                    <div className="patient-info-pill">
+                        <span>Age:</span> {p.age ?? "Not provided"}
+                        {" · "}
+                        <span>Sex:</span> {p.sex ?? "Not provided"}
+                        {p.mrn && (
+                            <>
+                                {" · "}
+                                <span>MRN:</span> {p.mrn}
+                            </>
+                        )}
+                    </div>
+                </div>
+            </div>
 
             {/* Urgent: doctor questions come first */}
             {data.hasUrgent && questions}
@@ -41,6 +53,7 @@ export default function ResultView({ data, busy, onRerun }) {
                 <ChatBox key={p.id} patientId={p.id} />
             ) : (
                 <p className="notice">
+                    <span aria-hidden="true">💬</span>
                     Chat is only available for the sample patients, not for pasted reports.
                 </p>
             )}

@@ -42,7 +42,8 @@ export default function NeedsInfoForm({ needsInfo, results, busy, onSubmit }) {
     return (
         <form className="card needs-info" onSubmit={handleSubmit}>
             <h3>
-                <span aria-hidden="true">ℹ</span> More information needed
+                <span className="card-icon" aria-hidden="true">ℹ</span>
+                More information needed
             </h3>
             <p className="small">
                 The right normal range can't be chosen without this. What you type here
@@ -52,7 +53,10 @@ export default function NeedsInfoForm({ needsInfo, results, busy, onSubmit }) {
             <div className="form-row">
                 {needsInfo.includes("age") && (
                     <label>
-                        Age {requiredFields.has("age") ? "(required)" : "(optional)"}
+                        Age{" "}
+                        <span style={{ fontWeight: 400, color: "var(--clr-text-faint)" }}>
+                            {requiredFields.has("age") ? "(required)" : "(optional)"}
+                        </span>
                         <input
                             type="number"
                             min="0"
@@ -64,7 +68,10 @@ export default function NeedsInfoForm({ needsInfo, results, busy, onSubmit }) {
                 )}
                 {needsInfo.includes("sex") && (
                     <label>
-                        Sex {requiredFields.has("sex") ? "(required)" : "(optional)"}
+                        Sex{" "}
+                        <span style={{ fontWeight: 400, color: "var(--clr-text-faint)" }}>
+                            {requiredFields.has("sex") ? "(required)" : "(optional)"}
+                        </span>
                         <select value={sex} onChange={(e) => setSex(e.target.value)}>
                             <option value="">Select...</option>
                             <option value="Male">Male</option>
@@ -73,10 +80,18 @@ export default function NeedsInfoForm({ needsInfo, results, busy, onSubmit }) {
                     </label>
                 )}
                 <button type="submit" disabled={busy}>
-                    {busy ? "Updating..." : "Update results"}
+                    {busy ? (
+                        <>Updating...</>
+                    ) : (
+                        <><span aria-hidden="true">&#8635;</span> Update results</>
+                    )}
                 </button>
             </div>
-            {formError && <p className="error">{formError}</p>}
+            {formError && (
+                <p className="error" style={{ marginTop: 10, fontSize: 13 }}>
+                    {formError}
+                </p>
+            )}
         </form>
     );
 }

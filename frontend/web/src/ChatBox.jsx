@@ -3,7 +3,7 @@ import { sendChat } from "./api";
 
 const WELCOME = {
     role: "assistant",
-    text: "Hi! Ask me about the results in this report, for example: “What does my hemoglobin mean?”",
+    text: 'Hi! Ask me about the results in this report, for example: "What does my hemoglobin mean?"',
 };
 
 export default function ChatBox({ patientId }) {
@@ -59,8 +59,11 @@ export default function ChatBox({ patientId }) {
 
     return (
         <section className="card chat">
-            <h3>Ask about this report</h3>
-            <p className="small">
+            <h3>
+                <span className="card-icon" aria-hidden="true">💬</span>
+                Ask about this report
+            </h3>
+            <p className="small" style={{ marginBottom: 10 }}>
                 I can only talk about the report that is open. I can't diagnose.
             </p>
 
@@ -70,7 +73,9 @@ export default function ChatBox({ patientId }) {
                         return (
                             <div className="bubble bubble-refused" key={i}>
                                 <strong>
-                                    <span aria-hidden="true">🔒</span> I can't share that
+                                    <span aria-hidden="true">🔒</span>
+                                    I can't share that
+                                    <span className="refused-label-pill">Refused</span>
                                 </strong>
                                 <div>{m.text}</div>
                                 <Citations list={m.citations} />
@@ -80,7 +85,7 @@ export default function ChatBox({ patientId }) {
                     if (m.isError) {
                         return (
                             <div className="bubble bubble-error" key={i}>
-                                {m.text}
+                                <span aria-hidden="true">⚠ </span>{m.text}
                             </div>
                         );
                     }
@@ -94,7 +99,9 @@ export default function ChatBox({ patientId }) {
                         </div>
                     );
                 })}
-                {sending && <div className="bubble bubble-bot typing">Thinking...</div>}
+                {sending && (
+                    <div className="bubble bubble-bot typing">Thinking…</div>
+                )}
                 <div ref={bottomRef} />
             </div>
 
@@ -107,7 +114,7 @@ export default function ChatBox({ patientId }) {
                     disabled={sending}
                 />
                 <button type="submit" disabled={sending || !input.trim()}>
-                    Send
+                    <span aria-hidden="true">↑</span> Send
                 </button>
             </form>
         </section>
