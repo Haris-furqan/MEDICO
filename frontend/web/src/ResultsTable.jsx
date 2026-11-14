@@ -19,7 +19,7 @@ function ResultRow({ r }) {
     return (
         <>
             <tr className={"row-" + r.status}>
-                <td>
+                <td data-label="Test">
                     <strong>{name}</strong>
                     {showRawName && (
                         <div className="small">printed as "{r.rawName}"</div>
@@ -28,7 +28,7 @@ function ResultRow({ r }) {
                         <div className="small reason">{r.reason}</div>
                     )}
                 </td>
-                <td className="mono">
+                <td className="mono" data-label="Value">
                     {r.value} {r.unit}
                     {converted && (
                         <div className="small">
@@ -36,10 +36,10 @@ function ResultRow({ r }) {
                         </div>
                     )}
                 </td>
-                <td>
+                <td data-label="Status">
                     <StatusBadge status={r.status} />
                 </td>
-                <td className="small" style={{ color: "var(--clr-text)" }}>
+                <td className="small" data-label="Normal range" style={{ color: "var(--clr-text)" }}>
                     {formatRange(r.range)}
                 </td>
                 <td>

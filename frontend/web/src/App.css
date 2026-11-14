@@ -1,15 +1,1 @@
-/* App.css — layout helpers only; all tokens live in index.css */
-
-/* Legacy counter button (kept for compat) */
-.counter {
-  font-size: 15px;
-  padding: 6px 14px;
-  border-radius: var(--r-sm);
-  color: var(--clr-primary);
-  background: var(--clr-primary-bg);
-  border: 1.5px solid transparent;
-  cursor: pointer;
-  transition: border-color 0.2s;
-}
-.counter:hover { border-color: var(--clr-primary-mid); }
-.counter:focus-visible { outline: 2px solid var(--clr-primary); outline-offset: 2px; }
+/* App.css — intentionally minimal; all styling lives in index.css */
