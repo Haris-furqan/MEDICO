@@ -6,7 +6,7 @@ export const pool = process.env.DATABASE_URL
   ? new pg.Pool({
       connectionString: process.env.DATABASE_URL,
       max: 5,
-      connectionTimeoutMillis: 3000, // DB down = fail fast, not hang the request
+      connectionTimeoutMillis: 10000, // DB down = fail fast, not hang the request
       idleTimeoutMillis: 30000,
     })
   : null;
