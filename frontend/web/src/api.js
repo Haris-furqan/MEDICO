@@ -23,3 +23,20 @@ export async function analyze(body) {
     }
     return data;
 }
+
+// history is [{ role: "user" | "assistant", text: "..." }]
+export async function sendChat(patientId, message, history) {
+    const res = await fetch(`${BASE}/chat`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ patientId, message, history }),
+    });
+    const data = await res.json().catch(() => null);
+
+    if (!res.ok) {
+        const err = new Error(data?.error?.message || "Something went wrong");
+        err.code = data?.error?.code || "UNKNOWN";
+        throw err;
+    }
+    return data; // { reply, refused, refusalReason, citations }
+}

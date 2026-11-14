@@ -1,6 +1,7 @@
 import ResultsTable from "./ResultsTable";
 import UrgentBanner from "./UrgentBanner";
 import NeedsInfoForm from "./NeedsInfoForm";
+import ChatBox from "./ChatBox";
 import { PlainLanguage, DoctorQuestions, Disclaimer } from "./Explanation";
 
 export default function ResultView({ data, busy, onRerun }) {
@@ -34,6 +35,15 @@ export default function ResultView({ data, busy, onRerun }) {
 
             {ex && <PlainLanguage explanation={ex} status={data.explanationStatus} />}
             {!data.hasUrgent && questions}
+
+            {/* key = patient id, so the chat starts fresh when you switch patients */}
+            {p.id ? (
+                <ChatBox key={p.id} patientId={p.id} />
+            ) : (
+                <p className="notice">
+                    Chat is only available for the sample patients, not for pasted reports.
+                </p>
+            )}
 
             <Disclaimer text={ex?.disclaimer} />
         </section>
