@@ -6,7 +6,15 @@ import analyzeRouter from './routes/analyze.js';
 import chatRouter from './routes/chat.js';
 import { loadSamples } from './services/samples.js';
 import { errorHandler } from './errors.js';
+import cors from 'cors'
 
+app.use(cors({
+  origin: [
+    'http://localhost:5173',
+    'https://netlify.app'
+  ],
+  credentials: true
+}));
 loadSamples(); // fails at startup if lab_reports is missing
 
 const app = express();
