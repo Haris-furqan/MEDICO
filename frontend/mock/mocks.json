@@ -1,0 +1,1424 @@
+{
+  "patients": [
+    {
+      "id": "P001",
+      "name": "Alice Smith",
+      "age": 28,
+      "sex": "Female",
+      "mrn": "CLD-P001-9942",
+      "testCount": 2,
+      "hasUrgent": false,
+      "needsInfo": []
+    },
+    {
+      "id": "P002",
+      "name": "Bob Jones",
+      "age": 35,
+      "sex": "Female",
+      "mrn": "CLD-P002-9942",
+      "testCount": 1,
+      "hasUrgent": false,
+      "needsInfo": []
+    },
+    {
+      "id": "P003",
+      "name": "Charlie Brown",
+      "age": null,
+      "sex": null,
+      "mrn": "CLD-P003-9942",
+      "testCount": 1,
+      "hasUrgent": false,
+      "needsInfo": [
+        "age",
+        "sex"
+      ]
+    },
+    {
+      "id": "P004",
+      "name": "Diana Prince",
+      "age": 42,
+      "sex": "Female",
+      "mrn": "CLD-P004-9942",
+      "testCount": 2,
+      "hasUrgent": true,
+      "needsInfo": []
+    },
+    {
+      "id": "P005",
+      "name": "Ethan Hunt",
+      "age": 50,
+      "sex": "Male",
+      "mrn": "CLD-P005-9942",
+      "testCount": 1,
+      "hasUrgent": false,
+      "needsInfo": []
+    },
+    {
+      "id": "P006",
+      "name": "Fiona Gallagher",
+      "age": 22,
+      "sex": "Female",
+      "mrn": "CLD-P006-9942",
+      "testCount": 1,
+      "hasUrgent": false,
+      "needsInfo": []
+    },
+    {
+      "id": "P007",
+      "name": "George Costanza",
+      "age": 65,
+      "sex": "Male",
+      "mrn": "CLD-P007-9942",
+      "testCount": 1,
+      "hasUrgent": false,
+      "needsInfo": []
+    },
+    {
+      "id": "P008",
+      "name": "Haley Dunphy",
+      "age": 19,
+      "sex": "Female",
+      "mrn": "CLD-P008-9942",
+      "testCount": 2,
+      "hasUrgent": false,
+      "needsInfo": []
+    },
+    {
+      "id": "P009",
+      "name": "Ian Malcolm",
+      "age": 48,
+      "sex": "Male",
+      "mrn": "CLD-P009-9942",
+      "testCount": 2,
+      "hasUrgent": false,
+      "needsInfo": []
+    },
+    {
+      "id": "P010",
+      "name": "Julia Child",
+      "age": 55,
+      "sex": "Female",
+      "mrn": "CLD-P010-9942",
+      "testCount": 1,
+      "hasUrgent": false,
+      "needsInfo": []
+    },
+    {
+      "id": "P011",
+      "name": "Kevin Hart",
+      "age": 40,
+      "sex": "Male",
+      "mrn": "CLD-P011-9942",
+      "testCount": 2,
+      "hasUrgent": false,
+      "needsInfo": []
+    },
+    {
+      "id": "P012",
+      "name": "Laura Croft",
+      "age": 32,
+      "sex": null,
+      "mrn": "CLD-P012-9942",
+      "testCount": 1,
+      "hasUrgent": false,
+      "needsInfo": [
+        "sex"
+      ]
+    },
+    {
+      "id": "P013",
+      "name": "Michael Scott",
+      "age": 45,
+      "sex": "Male",
+      "mrn": "CLD-P013-9942",
+      "testCount": 1,
+      "hasUrgent": true,
+      "needsInfo": []
+    },
+    {
+      "id": "P014",
+      "name": "Nancy Drew",
+      "age": 29,
+      "sex": "Female",
+      "mrn": "CLD-P014-9942",
+      "testCount": 2,
+      "hasUrgent": false,
+      "needsInfo": []
+    }
+  ],
+  "analyze": {
+    "P001": {
+      "patient": {
+        "id": "P001",
+        "name": "Alice Smith",
+        "age": 28,
+        "sex": "Female",
+        "mrn": "CLD-P001-9942"
+      },
+      "results": [
+        {
+          "rawName": "Hemoglobin",
+          "analyte": "Hemoglobin",
+          "value": 13.5,
+          "unit": "g/dL",
+          "status": "normal",
+          "direction": null,
+          "urgent": false,
+          "steps": [
+            "12.1 <= 13.5 <= 15.1 -> normal."
+          ],
+          "source": "4_ranges_hematology.md",
+          "missing": [],
+          "standardValue": 13.5,
+          "standardUnit": "g/dL",
+          "range": {
+            "min": 12.1,
+            "max": 15.1,
+            "unit": "g/dL",
+            "sex": "Female"
+          },
+          "neededMissing": []
+        },
+        {
+          "rawName": "WBC",
+          "analyte": "White Blood Cell Count",
+          "value": 6000,
+          "unit": "cells/mcL",
+          "status": "normal",
+          "direction": null,
+          "urgent": false,
+          "steps": [
+            "Matched \"WBC\" to White Blood Cell Count (2_medical_glossary.md).",
+            "4500 <= 6000 <= 11000 -> normal."
+          ],
+          "source": "4_ranges_hematology.md",
+          "missing": [],
+          "standardValue": 6000,
+          "standardUnit": "cells/mcL",
+          "range": {
+            "min": 4500,
+            "max": 11000,
+            "unit": "cells/mcL",
+            "sex": "All"
+          },
+          "neededMissing": []
+        }
+      ],
+      "needsInfo": [],
+      "hasUrgent": false,
+      "explanation": {
+        "summary": "All the results the lab could check are in the normal range.",
+        "perTest": [
+          {
+            "analyte": "Hemoglobin",
+            "status": "normal",
+            "whatItMeasures": "Hemoglobin shows the protein in red blood cells that carries oxygen around the body.",
+            "whatItMeans": "This is inside the lab's normal range for you. Only a doctor can say what it means for you."
+          },
+          {
+            "analyte": "White Blood Cell Count",
+            "status": "normal",
+            "whatItMeasures": "White Blood Cell Count shows the cells that help the body fight infections.",
+            "whatItMeans": "This is inside the lab's normal range for you. Only a doctor can say what it means for you."
+          }
+        ],
+        "doctorQuestions": [],
+        "warnings": [],
+        "disclaimer": "This explains numbers only. It is not a diagnosis. Only a licensed doctor can diagnose conditions."
+      },
+      "explanationStatus": "ok",
+      "meta": {
+        "cached": false,
+        "model": "gemini-2.5-flash",
+        "ms": 1840
+      }
+    },
+    "P002": {
+      "patient": {
+        "id": "P002",
+        "name": "Bob Jones",
+        "age": 35,
+        "sex": "Female",
+        "mrn": "CLD-P002-9942"
+      },
+      "results": [
+        {
+          "rawName": "SGPT",
+          "analyte": "ALT",
+          "value": 45,
+          "unit": "U/L",
+          "status": "normal",
+          "direction": null,
+          "urgent": false,
+          "steps": [
+            "Matched \"SGPT\" to ALT (2_medical_glossary.md).",
+            "7 <= 45 <= 45 -> normal (exactly on a limit counts as normal)."
+          ],
+          "source": "5_ranges_biochemistry.md",
+          "missing": [],
+          "standardValue": 45,
+          "standardUnit": "U/L",
+          "range": {
+            "min": 7,
+            "max": 45,
+            "unit": "U/L",
+            "sex": "Female"
+          },
+          "neededMissing": []
+        }
+      ],
+      "needsInfo": [],
+      "hasUrgent": false,
+      "explanation": {
+        "summary": "All the results the lab could check are in the normal range.",
+        "perTest": [
+          {
+            "analyte": "ALT",
+            "status": "normal",
+            "whatItMeasures": "ALT shows an enzyme found mostly in the liver.",
+            "whatItMeans": "This is inside the lab's normal range for you. Only a doctor can say what it means for you."
+          }
+        ],
+        "doctorQuestions": [],
+        "warnings": [],
+        "disclaimer": "This explains numbers only. It is not a diagnosis. Only a licensed doctor can diagnose conditions."
+      },
+      "explanationStatus": "ok",
+      "meta": {
+        "cached": false,
+        "model": "gemini-2.5-flash",
+        "ms": 1840
+      }
+    },
+    "P003": {
+      "patient": {
+        "id": "P003",
+        "name": "Charlie Brown",
+        "age": null,
+        "sex": null,
+        "mrn": "CLD-P003-9942"
+      },
+      "results": [
+        {
+          "rawName": "Fasting Blood Sugar",
+          "analyte": "Fasting Blood Sugar",
+          "value": 110,
+          "unit": "mg/dL",
+          "status": "needs_info",
+          "direction": null,
+          "urgent": false,
+          "steps": [
+            "Cannot choose a range: age not provided. Ask the user instead of guessing (1_lab_safety_rules.md, rule 3)."
+          ],
+          "source": null,
+          "missing": [
+            "age",
+            "sex"
+          ],
+          "standardValue": 110,
+          "standardUnit": "mg/dL",
+          "reason": "the right normal range cannot be chosen: age and sex missing from the report",
+          "neededMissing": [
+            "age"
+          ]
+        }
+      ],
+      "needsInfo": [
+        "age",
+        "sex"
+      ],
+      "hasUrgent": false,
+      "explanation": null,
+      "explanationStatus": "skipped",
+      "meta": {
+        "cached": false,
+        "model": "gemini-2.5-flash",
+        "ms": 1840
+      }
+    },
+    "P004": {
+      "patient": {
+        "id": "P004",
+        "name": "Diana Prince",
+        "age": 42,
+        "sex": "Female",
+        "mrn": "CLD-P004-9942"
+      },
+      "results": [
+        {
+          "rawName": "Hemoglobin",
+          "analyte": "Hemoglobin",
+          "value": 6.5,
+          "unit": "g/dL",
+          "status": "urgent",
+          "direction": "low",
+          "urgent": true,
+          "steps": [
+            "URGENT: 6.5 g/dL is below the critical limit of 7 (3_dangerous_urgent_values.md).",
+            "6.5 < 12.1 (Female 18-100) -> low."
+          ],
+          "source": "4_ranges_hematology.md",
+          "missing": [],
+          "standardValue": 6.5,
+          "standardUnit": "g/dL",
+          "range": {
+            "min": 12.1,
+            "max": 15.1,
+            "unit": "g/dL",
+            "sex": "Female"
+          },
+          "neededMissing": []
+        },
+        {
+          "rawName": "Platelet Count",
+          "analyte": "Platelet Count",
+          "value": 120000,
+          "unit": "cells/mcL",
+          "status": "low",
+          "direction": "low",
+          "urgent": false,
+          "steps": [
+            "120000 < 150000 (All 18-100) -> low."
+          ],
+          "source": "4_ranges_hematology.md",
+          "missing": [],
+          "standardValue": 120000,
+          "standardUnit": "cells/mcL",
+          "range": {
+            "min": 150000,
+            "max": 450000,
+            "unit": "cells/mcL",
+            "sex": "All"
+          },
+          "neededMissing": []
+        }
+      ],
+      "needsInfo": [],
+      "hasUrgent": true,
+      "explanation": {
+        "summary": "2 of 2 checked results need a closer look with your doctor.",
+        "perTest": [
+          {
+            "analyte": "Hemoglobin",
+            "status": "urgent",
+            "whatItMeasures": "Hemoglobin shows the protein in red blood cells that carries oxygen around the body.",
+            "whatItMeans": "This value is in a range the lab treats as needing quick medical attention. Only a doctor can say what it means for you."
+          },
+          {
+            "analyte": "Platelet Count",
+            "status": "low",
+            "whatItMeasures": "Platelet Count shows the tiny cells that help blood clot.",
+            "whatItMeans": "A low value can have many causes. Only a doctor can say what it means for you."
+          }
+        ],
+        "doctorQuestions": [
+          "Do I need treatment or a visit today?",
+          "What could be causing my Hemoglobin to be low?",
+          "What could be causing my Platelet Count to be low?",
+          "Do I need a repeat test or any other tests?",
+          "Is there anything I should change in my food, activity or medicines while I wait for follow-up?"
+        ],
+        "warnings": [
+          "URGENT: please see a doctor today."
+        ],
+        "disclaimer": "This explains numbers only. It is not a diagnosis. Only a licensed doctor can diagnose conditions."
+      },
+      "explanationStatus": "ok",
+      "meta": {
+        "cached": false,
+        "model": "gemini-2.5-flash",
+        "ms": 1840
+      }
+    },
+    "P005": {
+      "patient": {
+        "id": "P005",
+        "name": "Ethan Hunt",
+        "age": 50,
+        "sex": "Male",
+        "mrn": "CLD-P005-9942"
+      },
+      "results": [
+        {
+          "rawName": "Fasting Blood Sugar",
+          "analyte": "Fasting Blood Sugar",
+          "value": 6,
+          "unit": "mmol/L",
+          "status": "high",
+          "direction": "high",
+          "urgent": false,
+          "steps": [
+            "Converted 6 mmol/L x 18.016 = 108.1 mg/dL.",
+            "108.1 > 99 (All 18-100) -> high."
+          ],
+          "source": "5_ranges_biochemistry.md",
+          "missing": [],
+          "standardValue": 108.1,
+          "standardUnit": "mg/dL",
+          "range": {
+            "min": 70,
+            "max": 99,
+            "unit": "mg/dL",
+            "sex": "All"
+          },
+          "neededMissing": []
+        }
+      ],
+      "needsInfo": [],
+      "hasUrgent": false,
+      "explanation": {
+        "summary": "1 of 1 checked result needs a closer look with your doctor.",
+        "perTest": [
+          {
+            "analyte": "Fasting Blood Sugar",
+            "status": "high",
+            "whatItMeasures": "Fasting Blood Sugar shows the amount of sugar in the blood after not eating for several hours.",
+            "whatItMeans": "A high value can have many causes. Only a doctor can say what it means for you."
+          }
+        ],
+        "doctorQuestions": [
+          "What could be causing my Fasting Blood Sugar to be high?",
+          "Do I need a repeat test or any other tests?",
+          "Is there anything I should change in my food, activity or medicines while I wait for follow-up?"
+        ],
+        "warnings": [],
+        "disclaimer": "This explains numbers only. It is not a diagnosis. Only a licensed doctor can diagnose conditions."
+      },
+      "explanationStatus": "ok",
+      "meta": {
+        "cached": false,
+        "model": "gemini-2.5-flash",
+        "ms": 1840
+      }
+    },
+    "P006": {
+      "patient": {
+        "id": "P006",
+        "name": "Fiona Gallagher",
+        "age": 22,
+        "sex": "Female",
+        "mrn": "CLD-P006-9942"
+      },
+      "results": [
+        {
+          "rawName": "Serum Ferritin",
+          "analyte": null,
+          "value": 25,
+          "unit": "ng/mL",
+          "status": "cannot_classify",
+          "direction": null,
+          "urgent": false,
+          "steps": [
+            "\"Serum Ferritin\" has no match in the glossary or range sheets."
+          ],
+          "source": null,
+          "missing": [],
+          "reason": "cannot be classified from the files",
+          "neededMissing": []
+        }
+      ],
+      "needsInfo": [],
+      "hasUrgent": false,
+      "explanation": null,
+      "explanationStatus": "skipped",
+      "meta": {
+        "cached": false,
+        "model": "gemini-2.5-flash",
+        "ms": 1840
+      }
+    },
+    "P007": {
+      "patient": {
+        "id": "P007",
+        "name": "George Costanza",
+        "age": 65,
+        "sex": "Male",
+        "mrn": "CLD-P007-9942"
+      },
+      "results": [
+        {
+          "rawName": "TSH",
+          "analyte": "TSH",
+          "value": 2.5,
+          "unit": "mIU/L",
+          "status": "normal",
+          "direction": null,
+          "urgent": false,
+          "steps": [
+            "0.4 <= 2.5 <= 4 -> normal."
+          ],
+          "source": "6_ranges_thyroid_urine.md",
+          "missing": [],
+          "standardValue": 2.5,
+          "standardUnit": "mIU/L",
+          "range": {
+            "min": 0.4,
+            "max": 4,
+            "unit": "mIU/L",
+            "sex": "All"
+          },
+          "neededMissing": []
+        }
+      ],
+      "needsInfo": [],
+      "hasUrgent": false,
+      "explanation": {
+        "summary": "All the results the lab could check are in the normal range.",
+        "perTest": [
+          {
+            "analyte": "TSH",
+            "status": "normal",
+            "whatItMeasures": "TSH shows a hormone that tells the thyroid gland how much to work.",
+            "whatItMeans": "This is inside the lab's normal range for you. Only a doctor can say what it means for you."
+          }
+        ],
+        "doctorQuestions": [],
+        "warnings": [],
+        "disclaimer": "This explains numbers only. It is not a diagnosis. Only a licensed doctor can diagnose conditions."
+      },
+      "explanationStatus": "ok",
+      "meta": {
+        "cached": false,
+        "model": "gemini-2.5-flash",
+        "ms": 1840
+      }
+    },
+    "P008": {
+      "patient": {
+        "id": "P008",
+        "name": "Haley Dunphy",
+        "age": 19,
+        "sex": "Female",
+        "mrn": "CLD-P008-9942"
+      },
+      "results": [
+        {
+          "rawName": "pH Level",
+          "analyte": "Urine pH",
+          "value": 5.5,
+          "unit": "",
+          "status": "normal",
+          "direction": null,
+          "urgent": false,
+          "steps": [
+            "Matched \"pH Level\" to Urine pH (2_medical_glossary.md).",
+            "4.5 <= 5.5 <= 8 -> normal."
+          ],
+          "source": "6_ranges_thyroid_urine.md",
+          "missing": [],
+          "standardValue": 5.5,
+          "standardUnit": "",
+          "range": {
+            "min": 4.5,
+            "max": 8,
+            "unit": "",
+            "sex": "All"
+          },
+          "neededMissing": []
+        },
+        {
+          "rawName": "Protein",
+          "analyte": "Urine Protein",
+          "value": "Negative",
+          "unit": "",
+          "status": "normal",
+          "direction": null,
+          "urgent": false,
+          "steps": [
+            "Matched \"Protein\" to Urine Protein (2_medical_glossary.md).",
+            "Expected \"Negative\", found \"Negative\" -> normal."
+          ],
+          "source": "6_ranges_thyroid_urine.md",
+          "missing": [],
+          "range": {
+            "expected": "Negative"
+          },
+          "neededMissing": []
+        }
+      ],
+      "needsInfo": [],
+      "hasUrgent": false,
+      "explanation": {
+        "summary": "All the results the lab could check are in the normal range.",
+        "perTest": [
+          {
+            "analyte": "Urine pH",
+            "status": "normal",
+            "whatItMeasures": "Urine pH shows how acidic or basic the urine is.",
+            "whatItMeans": "This is inside the lab's normal range for you. Only a doctor can say what it means for you."
+          },
+          {
+            "analyte": "Urine Protein",
+            "status": "normal",
+            "whatItMeasures": "Urine Protein shows whether protein is leaking into the urine.",
+            "whatItMeans": "This is inside the lab's normal range for you. Only a doctor can say what it means for you."
+          }
+        ],
+        "doctorQuestions": [],
+        "warnings": [],
+        "disclaimer": "This explains numbers only. It is not a diagnosis. Only a licensed doctor can diagnose conditions."
+      },
+      "explanationStatus": "ok",
+      "meta": {
+        "cached": false,
+        "model": "gemini-2.5-flash",
+        "ms": 1840
+      }
+    },
+    "P009": {
+      "patient": {
+        "id": "P009",
+        "name": "Ian Malcolm",
+        "age": 48,
+        "sex": "Male",
+        "mrn": "CLD-P009-9942"
+      },
+      "results": [
+        {
+          "rawName": "ALT",
+          "analyte": "ALT",
+          "value": 85,
+          "unit": "U/L",
+          "status": "high",
+          "direction": "high",
+          "urgent": false,
+          "steps": [
+            "85 > 55 (Male 18-100) -> high."
+          ],
+          "source": "5_ranges_biochemistry.md",
+          "missing": [],
+          "standardValue": 85,
+          "standardUnit": "U/L",
+          "range": {
+            "min": 7,
+            "max": 55,
+            "unit": "U/L",
+            "sex": "Male"
+          },
+          "neededMissing": []
+        },
+        {
+          "rawName": "AST",
+          "analyte": "AST",
+          "value": 60,
+          "unit": "U/L",
+          "status": "high",
+          "direction": "high",
+          "urgent": false,
+          "steps": [
+            "60 > 48 (Male 18-100) -> high."
+          ],
+          "source": "5_ranges_biochemistry.md",
+          "missing": [],
+          "standardValue": 60,
+          "standardUnit": "U/L",
+          "range": {
+            "min": 8,
+            "max": 48,
+            "unit": "U/L",
+            "sex": "Male"
+          },
+          "neededMissing": []
+        }
+      ],
+      "needsInfo": [],
+      "hasUrgent": false,
+      "explanation": {
+        "summary": "2 of 2 checked results need a closer look with your doctor.",
+        "perTest": [
+          {
+            "analyte": "ALT",
+            "status": "high",
+            "whatItMeasures": "ALT shows an enzyme found mostly in the liver.",
+            "whatItMeans": "A high value can have many causes. Only a doctor can say what it means for you."
+          },
+          {
+            "analyte": "AST",
+            "status": "high",
+            "whatItMeasures": "AST shows an enzyme found in the liver and muscles.",
+            "whatItMeans": "A high value can have many causes. Only a doctor can say what it means for you."
+          }
+        ],
+        "doctorQuestions": [
+          "What could be causing my ALT to be high?",
+          "What could be causing my AST to be high?",
+          "Do I need a repeat test or any other tests?",
+          "Is there anything I should change in my food, activity or medicines while I wait for follow-up?"
+        ],
+        "warnings": [],
+        "disclaimer": "This explains numbers only. It is not a diagnosis. Only a licensed doctor can diagnose conditions."
+      },
+      "explanationStatus": "ok",
+      "meta": {
+        "cached": false,
+        "model": "gemini-2.5-flash",
+        "ms": 1840
+      }
+    },
+    "P010": {
+      "patient": {
+        "id": "P010",
+        "name": "Julia Child",
+        "age": 55,
+        "sex": "Female",
+        "mrn": "CLD-P010-9942"
+      },
+      "results": [
+        {
+          "rawName": "Cholesterol",
+          "analyte": "Cholesterol",
+          "value": 200,
+          "unit": "mg/dL",
+          "status": "normal",
+          "direction": null,
+          "urgent": false,
+          "steps": [
+            "125 <= 200 <= 200 -> normal (exactly on a limit counts as normal)."
+          ],
+          "source": "5_ranges_biochemistry.md",
+          "missing": [],
+          "standardValue": 200,
+          "standardUnit": "mg/dL",
+          "range": {
+            "min": 125,
+            "max": 200,
+            "unit": "mg/dL",
+            "sex": "All"
+          },
+          "neededMissing": []
+        }
+      ],
+      "needsInfo": [],
+      "hasUrgent": false,
+      "explanation": {
+        "summary": "All the results the lab could check are in the normal range.",
+        "perTest": [
+          {
+            "analyte": "Cholesterol",
+            "status": "normal",
+            "whatItMeasures": "Cholesterol shows a fatty substance in the blood.",
+            "whatItMeans": "This is inside the lab's normal range for you. Only a doctor can say what it means for you."
+          }
+        ],
+        "doctorQuestions": [],
+        "warnings": [],
+        "disclaimer": "This explains numbers only. It is not a diagnosis. Only a licensed doctor can diagnose conditions."
+      },
+      "explanationStatus": "ok",
+      "meta": {
+        "cached": false,
+        "model": "gemini-2.5-flash",
+        "ms": 1840
+      }
+    },
+    "P011": {
+      "patient": {
+        "id": "P011",
+        "name": "Kevin Hart",
+        "age": 40,
+        "sex": "Male",
+        "mrn": "CLD-P011-9942"
+      },
+      "results": [
+        {
+          "rawName": "WBC",
+          "analyte": "White Blood Cell Count",
+          "value": 12000,
+          "unit": "cells/mcL",
+          "status": "high",
+          "direction": "high",
+          "urgent": false,
+          "steps": [
+            "Matched \"WBC\" to White Blood Cell Count (2_medical_glossary.md).",
+            "12000 > 11000 (All 18-100) -> high."
+          ],
+          "source": "4_ranges_hematology.md",
+          "missing": [],
+          "standardValue": 12000,
+          "standardUnit": "cells/mcL",
+          "range": {
+            "min": 4500,
+            "max": 11000,
+            "unit": "cells/mcL",
+            "sex": "All"
+          },
+          "neededMissing": []
+        },
+        {
+          "rawName": "PLT",
+          "analyte": "Platelet Count",
+          "value": 140000,
+          "unit": "cells/mcL",
+          "status": "low",
+          "direction": "low",
+          "urgent": false,
+          "steps": [
+            "Matched \"PLT\" to Platelet Count (2_medical_glossary.md).",
+            "140000 < 150000 (All 18-100) -> low."
+          ],
+          "source": "4_ranges_hematology.md",
+          "missing": [],
+          "standardValue": 140000,
+          "standardUnit": "cells/mcL",
+          "range": {
+            "min": 150000,
+            "max": 450000,
+            "unit": "cells/mcL",
+            "sex": "All"
+          },
+          "neededMissing": []
+        }
+      ],
+      "needsInfo": [],
+      "hasUrgent": false,
+      "explanation": {
+        "summary": "2 of 2 checked results need a closer look with your doctor.",
+        "perTest": [
+          {
+            "analyte": "White Blood Cell Count",
+            "status": "high",
+            "whatItMeasures": "White Blood Cell Count shows the cells that help the body fight infections.",
+            "whatItMeans": "A high value can have many causes. Only a doctor can say what it means for you."
+          },
+          {
+            "analyte": "Platelet Count",
+            "status": "low",
+            "whatItMeasures": "Platelet Count shows the tiny cells that help blood clot.",
+            "whatItMeans": "A low value can have many causes. Only a doctor can say what it means for you."
+          }
+        ],
+        "doctorQuestions": [
+          "What could be causing my White Blood Cell Count to be high?",
+          "What could be causing my Platelet Count to be low?",
+          "Do I need a repeat test or any other tests?",
+          "Is there anything I should change in my food, activity or medicines while I wait for follow-up?"
+        ],
+        "warnings": [],
+        "disclaimer": "This explains numbers only. It is not a diagnosis. Only a licensed doctor can diagnose conditions."
+      },
+      "explanationStatus": "ok",
+      "meta": {
+        "cached": false,
+        "model": "gemini-2.5-flash",
+        "ms": 1840
+      }
+    },
+    "P012": {
+      "patient": {
+        "id": "P012",
+        "name": "Laura Croft",
+        "age": 32,
+        "sex": null,
+        "mrn": "CLD-P012-9942"
+      },
+      "results": [
+        {
+          "rawName": "AST",
+          "analyte": "AST",
+          "value": 44,
+          "unit": "U/L",
+          "status": "needs_info",
+          "direction": null,
+          "urgent": false,
+          "steps": [
+            "Cannot choose a range: sex not provided. Ask the user instead of guessing (1_lab_safety_rules.md, rule 3)."
+          ],
+          "source": null,
+          "missing": [
+            "sex"
+          ],
+          "standardValue": 44,
+          "standardUnit": "U/L",
+          "reason": "the right normal range cannot be chosen: sex missing from the report",
+          "neededMissing": [
+            "sex"
+          ]
+        }
+      ],
+      "needsInfo": [
+        "sex"
+      ],
+      "hasUrgent": false,
+      "explanation": null,
+      "explanationStatus": "skipped",
+      "meta": {
+        "cached": false,
+        "model": "gemini-2.5-flash",
+        "ms": 1840
+      }
+    },
+    "P013": {
+      "patient": {
+        "id": "P013",
+        "name": "Michael Scott",
+        "age": 45,
+        "sex": "Male",
+        "mrn": "CLD-P013-9942"
+      },
+      "results": [
+        {
+          "rawName": "Fasting Blood Sugar",
+          "analyte": "Fasting Blood Sugar",
+          "value": 350,
+          "unit": "mg/dL",
+          "status": "urgent",
+          "direction": "high",
+          "urgent": true,
+          "steps": [
+            "URGENT: 350 mg/dL is above the critical limit of 300 (3_dangerous_urgent_values.md).",
+            "350 > 99 (All 18-100) -> high."
+          ],
+          "source": "5_ranges_biochemistry.md",
+          "missing": [],
+          "standardValue": 350,
+          "standardUnit": "mg/dL",
+          "range": {
+            "min": 70,
+            "max": 99,
+            "unit": "mg/dL",
+            "sex": "All"
+          },
+          "neededMissing": []
+        }
+      ],
+      "needsInfo": [],
+      "hasUrgent": true,
+      "explanation": {
+        "summary": "1 of 1 checked result needs a closer look with your doctor.",
+        "perTest": [
+          {
+            "analyte": "Fasting Blood Sugar",
+            "status": "urgent",
+            "whatItMeasures": "Fasting Blood Sugar shows the amount of sugar in the blood after not eating for several hours.",
+            "whatItMeans": "This value is in a range the lab treats as needing quick medical attention. Only a doctor can say what it means for you."
+          }
+        ],
+        "doctorQuestions": [
+          "Do I need treatment or a visit today?",
+          "What could be causing my Fasting Blood Sugar to be high?",
+          "Do I need a repeat test or any other tests?",
+          "Is there anything I should change in my food, activity or medicines while I wait for follow-up?"
+        ],
+        "warnings": [
+          "URGENT: please see a doctor today."
+        ],
+        "disclaimer": "This explains numbers only. It is not a diagnosis. Only a licensed doctor can diagnose conditions."
+      },
+      "explanationStatus": "ok",
+      "meta": {
+        "cached": false,
+        "model": "gemini-2.5-flash",
+        "ms": 1840
+      }
+    },
+    "P014": {
+      "patient": {
+        "id": "P014",
+        "name": "Nancy Drew",
+        "age": 29,
+        "sex": "Female",
+        "mrn": "CLD-P014-9942"
+      },
+      "results": [
+        {
+          "rawName": "FBS",
+          "analyte": "Fasting Blood Sugar",
+          "value": 85,
+          "unit": "mg/dL",
+          "status": "normal",
+          "direction": null,
+          "urgent": false,
+          "steps": [
+            "Matched \"FBS\" to Fasting Blood Sugar (2_medical_glossary.md).",
+            "70 <= 85 <= 99 -> normal."
+          ],
+          "source": "5_ranges_biochemistry.md",
+          "missing": [],
+          "standardValue": 85,
+          "standardUnit": "mg/dL",
+          "range": {
+            "min": 70,
+            "max": 99,
+            "unit": "mg/dL",
+            "sex": "All"
+          },
+          "neededMissing": []
+        },
+        {
+          "rawName": "SGOT",
+          "analyte": "AST",
+          "value": 22,
+          "unit": "U/L",
+          "status": "normal",
+          "direction": null,
+          "urgent": false,
+          "steps": [
+            "Matched \"SGOT\" to AST (2_medical_glossary.md).",
+            "8 <= 22 <= 43 -> normal."
+          ],
+          "source": "5_ranges_biochemistry.md",
+          "missing": [],
+          "standardValue": 22,
+          "standardUnit": "U/L",
+          "range": {
+            "min": 8,
+            "max": 43,
+            "unit": "U/L",
+            "sex": "Female"
+          },
+          "neededMissing": []
+        }
+      ],
+      "needsInfo": [],
+      "hasUrgent": false,
+      "explanation": {
+        "summary": "All the results the lab could check are in the normal range.",
+        "perTest": [
+          {
+            "analyte": "Fasting Blood Sugar",
+            "status": "normal",
+            "whatItMeasures": "Fasting Blood Sugar shows the amount of sugar in the blood after not eating for several hours.",
+            "whatItMeans": "This is inside the lab's normal range for you. Only a doctor can say what it means for you."
+          },
+          {
+            "analyte": "AST",
+            "status": "normal",
+            "whatItMeasures": "AST shows an enzyme found in the liver and muscles.",
+            "whatItMeans": "This is inside the lab's normal range for you. Only a doctor can say what it means for you."
+          }
+        ],
+        "doctorQuestions": [],
+        "warnings": [],
+        "disclaimer": "This explains numbers only. It is not a diagnosis. Only a licensed doctor can diagnose conditions."
+      },
+      "explanationStatus": "ok",
+      "meta": {
+        "cached": false,
+        "model": "gemini-2.5-flash",
+        "ms": 1840
+      }
+    }
+  },
+  "chat": [
+    {
+      "request": {
+        "patientId": "P004",
+        "message": "What does my hemoglobin of 6.5 mean?"
+      },
+      "response": {
+        "reply": "Hemoglobin is the protein in red blood cells that carries oxygen. Your value of 6.5 g/dL is below the lab's critical limit of 7.0, so please see a doctor today. I can't say why it is low; only a doctor can diagnose that.",
+        "refused": false,
+        "refusalReason": null,
+        "citations": [
+          "3_dangerous_urgent_values.md",
+          "4_ranges_hematology.md"
+        ]
+      }
+    },
+    {
+      "request": {
+        "patientId": "P004",
+        "message": "What were Ethan Hunt's sugar results?"
+      },
+      "response": {
+        "reply": "I can only discuss the report that is currently open. I can't share another patient's results.",
+        "refused": true,
+        "refusalReason": "other_patient",
+        "citations": [
+          "1_lab_safety_rules.md"
+        ]
+      }
+    },
+    {
+      "request": {
+        "patientId": "P004",
+        "message": "Do I have anemia?"
+      },
+      "response": {
+        "reply": "I can't diagnose conditions. Your hemoglobin is below the lab's critical limit, which is why a doctor should look at it today. Only a licensed doctor can say what is causing it.",
+        "refused": false,
+        "refusalReason": "no_diagnosis",
+        "citations": [
+          "1_lab_safety_rules.md",
+          "3_dangerous_urgent_values.md"
+        ]
+      }
+    }
+  ],
+  "reports": {
+    "P001": {
+      "patient": {
+        "id": "P001",
+        "name": "Alice Smith",
+        "age": 28,
+        "sex": "Female",
+        "mrn": "CLD-P001-9942"
+      },
+      "results": [
+        {
+          "rawName": "Hemoglobin",
+          "value": 13.5,
+          "unit": "g/dL",
+          "text": null
+        },
+        {
+          "rawName": "WBC",
+          "value": 6000,
+          "unit": "cells/mcL",
+          "text": null
+        }
+      ]
+    },
+    "P002": {
+      "patient": {
+        "id": "P002",
+        "name": "Bob Jones",
+        "age": 35,
+        "sex": "Female",
+        "mrn": "CLD-P002-9942"
+      },
+      "results": [
+        {
+          "rawName": "SGPT",
+          "value": 45,
+          "text": null,
+          "unit": "U/L"
+        }
+      ]
+    },
+    "P003": {
+      "patient": {
+        "id": "P003",
+        "name": "Charlie Brown",
+        "age": null,
+        "sex": null,
+        "mrn": "CLD-P003-9942"
+      },
+      "results": [
+        {
+          "rawName": "Fasting Blood Sugar",
+          "value": 110,
+          "unit": "mg/dL",
+          "text": null
+        }
+      ]
+    },
+    "P004": {
+      "patient": {
+        "id": "P004",
+        "name": "Diana Prince",
+        "age": 42,
+        "sex": "Female",
+        "mrn": "CLD-P004-9942"
+      },
+      "results": [
+        {
+          "rawName": "Hemoglobin",
+          "value": 6.5,
+          "unit": "g/dL",
+          "text": null
+        },
+        {
+          "rawName": "Platelet Count",
+          "value": 120000,
+          "unit": "cells/mcL",
+          "text": null
+        }
+      ]
+    },
+    "P005": {
+      "patient": {
+        "id": "P005",
+        "name": "Ethan Hunt",
+        "age": 50,
+        "sex": "Male",
+        "mrn": "CLD-P005-9942"
+      },
+      "results": [
+        {
+          "rawName": "Fasting Blood Sugar",
+          "value": 6,
+          "unit": "mmol/L",
+          "text": null
+        }
+      ]
+    },
+    "P006": {
+      "patient": {
+        "id": "P006",
+        "name": "Fiona Gallagher",
+        "age": 22,
+        "sex": "Female",
+        "mrn": "CLD-P006-9942"
+      },
+      "results": [
+        {
+          "rawName": "Serum Ferritin",
+          "value": 25,
+          "unit": "ng/mL",
+          "text": null
+        }
+      ]
+    },
+    "P007": {
+      "patient": {
+        "id": "P007",
+        "name": "George Costanza",
+        "age": 65,
+        "sex": "Male",
+        "mrn": "CLD-P007-9942"
+      },
+      "results": [
+        {
+          "rawName": "TSH",
+          "value": 2.5,
+          "unit": "mIU/L",
+          "text": null
+        }
+      ]
+    },
+    "P008": {
+      "patient": {
+        "id": "P008",
+        "name": "Haley Dunphy",
+        "age": 19,
+        "sex": "Female",
+        "mrn": "CLD-P008-9942"
+      },
+      "results": [
+        {
+          "rawName": "pH Level",
+          "value": 5.5,
+          "unit": "",
+          "text": null
+        },
+        {
+          "rawName": "Protein",
+          "value": null,
+          "unit": "",
+          "text": "Negative"
+        }
+      ]
+    },
+    "P009": {
+      "patient": {
+        "id": "P009",
+        "name": "Ian Malcolm",
+        "age": 48,
+        "sex": "Male",
+        "mrn": "CLD-P009-9942"
+      },
+      "results": [
+        {
+          "rawName": "ALT",
+          "value": 85,
+          "text": null,
+          "unit": "U/L"
+        },
+        {
+          "rawName": "AST",
+          "value": 60,
+          "text": null,
+          "unit": "U/L"
+        }
+      ]
+    },
+    "P010": {
+      "patient": {
+        "id": "P010",
+        "name": "Julia Child",
+        "age": 55,
+        "sex": "Female",
+        "mrn": "CLD-P010-9942"
+      },
+      "results": [
+        {
+          "rawName": "Cholesterol",
+          "value": 200,
+          "unit": "mg/dL",
+          "text": null
+        }
+      ]
+    },
+    "P011": {
+      "patient": {
+        "id": "P011",
+        "name": "Kevin Hart",
+        "age": 40,
+        "sex": "Male",
+        "mrn": "CLD-P011-9942"
+      },
+      "results": [
+        {
+          "rawName": "WBC",
+          "value": 12000,
+          "unit": "cells/mcL",
+          "text": null
+        },
+        {
+          "rawName": "PLT",
+          "value": 140000,
+          "unit": "cells/mcL",
+          "text": null
+        }
+      ]
+    },
+    "P012": {
+      "patient": {
+        "id": "P012",
+        "name": "Laura Croft",
+        "age": 32,
+        "sex": null,
+        "mrn": "CLD-P012-9942"
+      },
+      "results": [
+        {
+          "rawName": "AST",
+          "value": 44,
+          "unit": "U/L",
+          "text": null
+        }
+      ]
+    },
+    "P013": {
+      "patient": {
+        "id": "P013",
+        "name": "Michael Scott",
+        "age": 45,
+        "sex": "Male",
+        "mrn": "CLD-P013-9942"
+      },
+      "results": [
+        {
+          "rawName": "Fasting Blood Sugar",
+          "value": 350,
+          "unit": "mg/dL",
+          "text": null
+        }
+      ]
+    },
+    "P014": {
+      "patient": {
+        "id": "P014",
+        "name": "Nancy Drew",
+        "age": 29,
+        "sex": "Female",
+        "mrn": "CLD-P014-9942"
+      },
+      "results": [
+        {
+          "rawName": "FBS",
+          "value": 85,
+          "unit": "mg/dL",
+          "text": null
+        },
+        {
+          "rawName": "SGOT",
+          "value": 22,
+          "unit": "U/L",
+          "text": null
+        }
+      ]
+    }
+  }
+}
