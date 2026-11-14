@@ -31,8 +31,9 @@ async function callModel(model, body, apiKey) {
     signal: AbortSignal.timeout(TIMEOUT_MS),
   });
   if (!res.ok) {
-    const err = new Error(`Gemini ${model} HTTP ${res.status}`);
-    err.status = res.status;
+    const detail = (await res.text().catch(() => '')).replace(/\s+/g, ' ').slice(0, 300);
+const err = new Error(`Gemini ${model} HTTP ${res.status}: ${detail}`);
+err.status = res.status;
     const ra = Number(res.headers.get('retry-after'));
     if (Number.isFinite(ra) && ra > 0) err.retryAfterMs = Math.min(ra * 1000, BACKOFF_MAX_MS);
     throw err;
@@ -67,9 +68,9 @@ async function withRetry(model, body, apiKey, maxRetries) {
 }
 
 export async function generateJson({ system, contents, schema }) {
-  const apiKey = process.env.GEMINI_API_KEY;
-  const primary = process.env.LLM_MODEL;
-  const fallback = process.env.LLM_FALLBACK_MODEL;
+  const apiKey = process.env.GEMINI_API_KEY?.trim();
+const primary = process.env.LLM_MODEL?.trim();
+const fallback = process.env.LLM_FALLBACK_MODEL?.trim();
   if (!apiKey) throw new Error('GEMINI_API_KEY is not set');
   if (!primary) throw new Error('LLM_MODEL is not set');
 

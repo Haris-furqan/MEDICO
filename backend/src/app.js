@@ -1,10 +1,10 @@
 import 'dotenv/config'; // must be the FIRST import
 import express from 'express';
 import cors from 'cors';
-import patientsRouter from './routes/patients.js';
-import analyzeRouter from '../routes/analyze.js';
-import chatRouter from '../routes/chat.js';
-import { loadSamples } from '../services/samples.js';
+import patientsRouter from './routes/patient.js';
+import analyzeRouter from './routes/analyze.js';
+import chatRouter from './routes/chat.js';
+import { loadSamples } from './services/samples.js';
 import { errorHandler } from './errors.js';
 
 loadSamples(); // fails at startup if lab_reports is missing
