@@ -1,5 +1,7 @@
 import { useState } from "react";
+import Icon from "./Icons";
 import StatusBadge from "./StatusBadge";
+import RangeGauge from "./RangeGauge";
 
 function formatRange(range) {
     if (!range) return "No range available";
@@ -39,8 +41,9 @@ function ResultRow({ r }) {
                 <td data-label="Status">
                     <StatusBadge status={r.status} />
                 </td>
-                <td className="small" data-label="Normal range" style={{ color: "var(--clr-text)" }}>
+                <td className="small range-cell" data-label="Normal range" style={{ color: "var(--clr-text)" }}>
                     {formatRange(r.range)}
+                    <RangeGauge range={r.range} value={r.standardValue ?? r.value} status={r.status} />
                 </td>
                 <td>
                     <button
@@ -48,7 +51,7 @@ function ResultRow({ r }) {
                         onClick={() => setOpen(!open)}
                         aria-expanded={open}
                     >
-                        <span aria-hidden="true">{open ? "▴" : "▾"}</span>
+                        <Icon name="chevron" size={16} className={open ? "flip" : ""} />
                         {open ? "Hide" : "How we got this"}
                     </button>
                 </td>
@@ -65,7 +68,7 @@ function ResultRow({ r }) {
                                 ))}
                             </ol>
                             <div className="steps-source">
-                                <span aria-hidden="true">📋</span>
+                                <Icon name="clipboard" size={16} />
                                 Source:{" "}
                                 {r.source
                                     ? r.source
@@ -79,7 +82,8 @@ function ResultRow({ r }) {
     );
 }
 
-export default function ResultsTable({ results }) {
+export default function ResultsTable({ results, filter }) {
+    const rows = results.map((r, i) => ({ r, i })).filter(({ r }) => !filter || r.status === filter);
     return (
         <div className="table-wrap">
             <table className="results">
@@ -93,7 +97,7 @@ export default function ResultsTable({ results }) {
                     </tr>
                 </thead>
                 <tbody>
-                    {results.map((r, i) => (
+                    {rows.map(({ r, i }) => (
                         <ResultRow key={i} r={r} />
                     ))}
                 </tbody>

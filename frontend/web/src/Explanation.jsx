@@ -1,15 +1,16 @@
 import StatusBadge from "./StatusBadge";
+import Icon from "./Icons";
 
 export function PlainLanguage({ explanation, status }) {
     return (
         <section className="card">
             <h3>
-                <span className="card-icon" style={{ background: "rgba(21,128,61,.12)" }} aria-hidden="true">📋</span>
+                <span className="card-icon" aria-hidden="true"><Icon name="clipboard" size={18} /></span>
                 In simple words
             </h3>
             {status === "fallback" && (
                 <p className="notice">
-                    <span aria-hidden="true">⚡</span>
+                    <Icon name="bolt" size={18} />
                     Simplified explanation: the AI helper is unavailable right now. The
                     results table is still fully correct.
                 </p>
@@ -34,7 +35,7 @@ export function DoctorQuestions({ questions }) {
     return (
         <section className="card questions">
             <h3>
-                <span className="card-icon" aria-hidden="true">💬</span>
+                <span className="card-icon" aria-hidden="true"><Icon name="chat" size={18} /></span>
                 Questions to ask your doctor
             </h3>
             <ul>
@@ -49,7 +50,7 @@ export function DoctorQuestions({ questions }) {
 export function Disclaimer({ text }) {
     return (
         <p className="disclaimer">
-            <span className="disclaimer-icon" aria-hidden="true">ℹ</span>
+            <Icon name="info" size={20} className="disclaimer-icon" />
             {text ||
                 "This explains numbers only. It is not a diagnosis. Only a licensed doctor can diagnose conditions."}
         </p>

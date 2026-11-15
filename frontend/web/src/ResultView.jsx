@@ -1,10 +1,14 @@
+import { useState } from "react";
 import ResultsTable from "./ResultsTable";
+import StatusSummary from "./StatusSummary";
+import Icon from "./Icons";
 import UrgentBanner from "./UrgentBanner";
 import NeedsInfoForm from "./NeedsInfoForm";
 import ChatBox from "./ChatBox";
 import { PlainLanguage, DoctorQuestions, Disclaimer } from "./Explanation";
 
 export default function ResultView({ data, busy, onRerun }) {
+    const [filter, setFilter] = useState(null); // visual filter for the table only
     const p = data.patient;
     const ex = data.explanation; // can be null
     const questions = <DoctorQuestions questions={ex?.doctorQuestions} />;
@@ -31,6 +35,8 @@ export default function ResultView({ data, busy, onRerun }) {
                 </div>
             </div>
 
+            <StatusSummary results={data.results} active={filter} onChange={setFilter} />
+
             {/* Urgent: doctor questions come first */}
             {data.hasUrgent && questions}
 
@@ -43,7 +49,7 @@ export default function ResultView({ data, busy, onRerun }) {
                 />
             )}
 
-            <ResultsTable results={data.results} />
+            <ResultsTable results={data.results} filter={filter} />
 
             {ex && <PlainLanguage explanation={ex} status={data.explanationStatus} />}
             {!data.hasUrgent && questions}
@@ -53,7 +59,7 @@ export default function ResultView({ data, busy, onRerun }) {
                 <ChatBox key={p.id} patientId={p.id} />
             ) : (
                 <p className="notice">
-                    <span aria-hidden="true">💬</span>
+                    <Icon name="chat" size={18} />
                     Chat is only available for the sample patients, not for pasted reports.
                 </p>
             )}
