@@ -1,3 +1,5 @@
+import Icon from "./Icons";
+
 export default function UrgentBanner({ warnings }) {
     const lines =
         warnings && warnings.length > 0
@@ -6,7 +8,7 @@ export default function UrgentBanner({ warnings }) {
 
     return (
         <div className="urgent-banner" role="alert">
-            <span className="urgent-icon" aria-hidden="true">⚠</span>
+            <Icon name="alert" size={30} className="urgent-icon" />
             <div className="urgent-banner-body">
                 <div className="urgent-banner-title">
                     Urgent — Action Required

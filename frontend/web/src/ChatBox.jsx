@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import Icon from "./Icons";
 import { sendChat } from "./api";
 
 const WELCOME = {
@@ -14,7 +15,9 @@ export default function ChatBox({ patientId }) {
 
     // Scroll to the newest message
     useEffect(() => {
-        bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+        // Scroll only the chat box (not the whole page) to the newest message
+        const log = bottomRef.current?.parentElement;
+        if (log) log.scrollTo({ top: log.scrollHeight, behavior: "smooth" });
     }, [messages, sending]);
 
     async function handleSend(e) {
@@ -58,9 +61,9 @@ export default function ChatBox({ patientId }) {
     }
 
     return (
-        <section className="card chat">
+        <section className="card chat" id="chat">
             <h3>
-                <span className="card-icon" aria-hidden="true">💬</span>
+                <span className="card-icon" aria-hidden="true"><Icon name="chat" size={18} /></span>
                 Ask about this report
             </h3>
             <p className="small" style={{ marginBottom: 10 }}>
@@ -73,7 +76,7 @@ export default function ChatBox({ patientId }) {
                         return (
                             <div className="bubble bubble-refused" key={i}>
                                 <strong>
-                                    <span aria-hidden="true">🔒</span>
+                                    <Icon name="lock" size={18} />
                                     I can't share that
                                     <span className="refused-label-pill">Refused</span>
                                 </strong>
@@ -85,7 +88,7 @@ export default function ChatBox({ patientId }) {
                     if (m.isError) {
                         return (
                             <div className="bubble bubble-error" key={i}>
-                                <span aria-hidden="true">⚠ </span>{m.text}
+                                <Icon name="alert" size={16} /> {m.text}
                             </div>
                         );
                     }
@@ -114,7 +117,7 @@ export default function ChatBox({ patientId }) {
                     disabled={sending}
                 />
                 <button type="submit" disabled={sending || !input.trim()}>
-                    <span aria-hidden="true">↑</span> Send
+                    <Icon name="up" size={16} /> Send
                 </button>
             </form>
         </section>

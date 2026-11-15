@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Icon from "./Icons";
 
 export default function NeedsInfoForm({ needsInfo, results, busy, onSubmit }) {
     const [age, setAge] = useState("");
@@ -42,7 +43,7 @@ export default function NeedsInfoForm({ needsInfo, results, busy, onSubmit }) {
     return (
         <form className="card needs-info" onSubmit={handleSubmit}>
             <h3>
-                <span className="card-icon" aria-hidden="true">ℹ</span>
+                <span className="card-icon" aria-hidden="true"><Icon name="info" size={18} /></span>
                 More information needed
             </h3>
             <p className="small">
@@ -83,7 +84,7 @@ export default function NeedsInfoForm({ needsInfo, results, busy, onSubmit }) {
                     {busy ? (
                         <>Updating...</>
                     ) : (
-                        <><span aria-hidden="true">&#8635;</span> Update results</>
+                        <><Icon name="repeat" size={16} /> Update results</>
                     )}
                 </button>
             </div>
